@@ -1,12 +1,13 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 
-load("//build/kernel/kleaf:kernel.bzl", "kernel_module")
+load("//build/kernel/kleaf:kernel.bzl", "ddk_headers", "kernel_module")
 
-filegroup(
+ddk_headers(
     name = "headers",
-    srcs = glob([
+    hdrs = glob([
         "*.h",
     ]),
+    includes = ["."],
     visibility = [
         "//private/devices/google:__subpackages__",
         "//private/google-modules/bluetooth:__subpackages__",
